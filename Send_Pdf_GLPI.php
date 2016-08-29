@@ -14,8 +14,8 @@
 	class Send_Pdf_GLPI
 	{
   	protected $date;
-    protected $firstday;
-    protected $lastday;
+    	protected $firstday;
+    	protected $lastday;
 	protected $firstfr;
 	protected $lastfr;
 
