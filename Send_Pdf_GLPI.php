@@ -93,19 +93,19 @@
 				$pdf->ln();
 
 				$all = $base_glpi->prepare("SELECT
-											FROM_UNIXTIME(UNIX_TIMESTAMP(glpi_tickets.date),'%Y-%m') AS Dates, COUNT(glpi_tickets.id) AS Total_cr��s, glpi_users.realname, glpi_users.firstname
-											FROM glpi_tickets
-											LEFT JOIN glpi_tickets_users ON (glpi_tickets_users.tickets_id = glpi_tickets.id)
-											LEFT JOIN glpi_users ON (glpi_users.id = glpi_tickets_users.users_id)
-											WHERE NOT glpi_tickets.is_deleted AND (glpi_tickets_users.users_id IN (
-												SELECT id
-												FROM glpi_users
-												WHERE user_dn like '%Service ??%'
-											)
-											AND glpi_tickets_users.type='2') AND ( glpi_tickets.date >= :debut AND glpi_tickets.date <= ADDDATE(:fin , INTERVAL 1 DAY))
-											GROUP BY glpi_tickets_users.users_id
-											ORDER BY Total_cr��s desc
-										");
+					FROM_UNIXTIME(UNIX_TIMESTAMP(glpi_tickets.date),'%Y-%m') AS Dates, COUNT(glpi_tickets.id) AS Total_cr��s, glpi_users.realname, glpi_users.firstname
+					FROM glpi_tickets
+					LEFT JOIN glpi_tickets_users ON (glpi_tickets_users.tickets_id = glpi_tickets.id)
+					LEFT JOIN glpi_users ON (glpi_users.id = glpi_tickets_users.users_id)
+					WHERE NOT glpi_tickets.is_deleted AND (glpi_tickets_users.users_id IN (
+						SELECT id
+						FROM glpi_users
+						WHERE user_dn like '%Service ??%'
+					)
+					AND glpi_tickets_users.type='2') AND ( glpi_tickets.date >= :debut AND glpi_tickets.date <= ADDDATE(:fin , INTERVAL 1 DAY))
+					GROUP BY glpi_tickets_users.users_id
+					ORDER BY Total_cr��s desc
+				");
 
 				// On execute la requ�te avec les variables
 				$all->execute(array(
