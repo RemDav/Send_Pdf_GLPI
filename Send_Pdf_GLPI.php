@@ -1,7 +1,7 @@
 <?php
 /*
  -------------------------------------------------------------------------
- Send PDF for GLPI
+ Pdfmailer
  Copyright (C) 2016 by RemDev.
  -------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@
  */
  
  
-	class Send_Pdf_GLPI
+	class pdfmailer
 	{
   	protected $date;
     	protected $firstday;
@@ -193,6 +193,6 @@
 				mail($mail, $subject, $body, $headers);
 			}
 		}
-	$reportsend = new Send_Pdf_GLPI;
+	$reportsend = new pdfmailer;
 	$reportsend->generate();
 	$reportsend->send();
